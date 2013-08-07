@@ -10,9 +10,11 @@
 
 @interface SZCircularImageView : UIImageView
 {
+  BOOL isMovingSpotlight;
   UIImageView *actualImage;
 }
 
 - (void)moveSpotlightBy:(CGPoint)center;
+- (void)moveViewPointBy:(CGPoint)center;
 
 @end

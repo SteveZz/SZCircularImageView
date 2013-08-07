@@ -37,7 +37,10 @@
   /**
    If the user changed the frame of the view, it's subview should change as well.
    */
-  [actualImage setFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
+  if(!isMovingSpotlight){
+    [actualImage setFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
+  }
+  isMovingSpotlight = NO;
   
   [self resizeCircle];
 }
@@ -96,9 +99,19 @@
 
 /**
  This allows you to move the "Spotlight" meaning
- you can have the image slide around within the circle.
+ you can slide the circle around the image
  */
 - (void)moveSpotlightBy:(CGPoint)center{
+  isMovingSpotlight = YES;
+  [self setFrame:CGRectMake(self.frame.origin.x+center.x, self.frame.origin.y+center.y, self.frame.size.width, self.frame.size.height)];
+  [actualImage setFrame:CGRectMake(actualImage.frame.origin.x-center.x, actualImage.frame.origin.y-center.y, actualImage.frame.size.width, actualImage.frame.size.height)];
+}
+
+/**
+ This allows you to move the view point meaning
+ you can have the image slide around within the circle.
+ */
+- (void)moveViewPointBy:(CGPoint)center{
   [actualImage setFrame:CGRectMake(actualImage.frame.origin.x-center.x, actualImage.frame.origin.y-center.y, actualImage.frame.size.width, actualImage.frame.size.height)];
 }
 

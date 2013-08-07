@@ -32,10 +32,10 @@
 - (void)viewDidAppear:(BOOL)animated{
   [super viewDidAppear:animated];
   [UIView animateWithDuration:3.0 delay:1.0 options:0 animations:^{
-    [_circle2 moveSpotlightBy:CGPointMake(10, 40)];
+    [_circle2 moveSpotlightBy:CGPointMake(60, 10)];
   } completion:^(BOOL finished) {
     [UIView animateWithDuration:3.0 animations:^{
-      [_circle2 moveSpotlightBy:CGPointMake(-30, -20)];
+      [_circle2 moveViewPointBy:CGPointMake(-60, -10)];
     }];
   }];
 }
